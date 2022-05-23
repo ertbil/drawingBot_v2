@@ -1,0 +1,488 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> result
+Rule 1     result -> expression
+Rule 2     result -> empty
+Rule 3     expression -> expression FORWARD NUMBER
+Rule 4     expression -> expression ROTATE NUMBER
+Rule 5     expression -> expression COLOR KIRMIZI
+Rule 6     expression -> expression COLOR YESIL
+Rule 7     expression -> expression COLOR MAVI
+Rule 8     expression -> expression COLOR SIYAH
+Rule 9     expression -> expression PEN NUMBER
+Rule 10    expression -> loop
+Rule 11    expression -> loop_with_loop
+Rule 12    expression -> empty
+Rule 13    empty -> <empty>
+Rule 14    loop -> LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET
+Rule 15    loop -> LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET
+Rule 16    loop -> empty
+Rule 17    loop_with_loop -> LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET
+
+Terminals, with rules where they appear
+
+COLOR                : 5 6 7 8
+FORWARD              : 3
+KIRMIZI              : 5
+LEFTBRACKET          : 14 15 17
+LOOP                 : 14 15 17
+MAVI                 : 7
+NUMBER               : 3 4 9 14 15 17
+PEN                  : 9
+RIGHTBRACKET         : 14 15 17
+ROTATE               : 4
+SIYAH                : 8
+YESIL                : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+empty                : 2 12 16
+expression           : 1 3 4 5 6 7 8 9 14 17
+loop                 : 10 15 17
+loop_with_loop       : 11
+result               : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . result
+    (1) result -> . expression
+    (2) result -> . empty
+    (3) expression -> . expression FORWARD NUMBER
+    (4) expression -> . expression ROTATE NUMBER
+    (5) expression -> . expression COLOR KIRMIZI
+    (6) expression -> . expression COLOR YESIL
+    (7) expression -> . expression COLOR MAVI
+    (8) expression -> . expression COLOR SIYAH
+    (9) expression -> . expression PEN NUMBER
+    (10) expression -> . loop
+    (11) expression -> . loop_with_loop
+    (12) expression -> . empty
+    (13) empty -> .
+    (14) loop -> . LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET
+    (15) loop -> . LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET
+    (16) loop -> . empty
+    (17) loop_with_loop -> . LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET
+
+    $end            reduce using rule 13 (empty -> .)
+    FORWARD         reduce using rule 13 (empty -> .)
+    ROTATE          reduce using rule 13 (empty -> .)
+    COLOR           reduce using rule 13 (empty -> .)
+    PEN             reduce using rule 13 (empty -> .)
+    LOOP            shift and go to state 6
+
+    result                         shift and go to state 1
+    expression                     shift and go to state 2
+    empty                          shift and go to state 3
+    loop                           shift and go to state 4
+    loop_with_loop                 shift and go to state 5
+
+state 1
+
+    (0) S' -> result .
+
+
+
+state 2
+
+    (1) result -> expression .
+    (3) expression -> expression . FORWARD NUMBER
+    (4) expression -> expression . ROTATE NUMBER
+    (5) expression -> expression . COLOR KIRMIZI
+    (6) expression -> expression . COLOR YESIL
+    (7) expression -> expression . COLOR MAVI
+    (8) expression -> expression . COLOR SIYAH
+    (9) expression -> expression . PEN NUMBER
+
+    $end            reduce using rule 1 (result -> expression .)
+    FORWARD         shift and go to state 7
+    ROTATE          shift and go to state 8
+    COLOR           shift and go to state 9
+    PEN             shift and go to state 10
+
+
+state 3
+
+    (2) result -> empty .
+    (12) expression -> empty .
+    (16) loop -> empty .
+
+  ! reduce/reduce conflict for $end resolved using rule 2 (result -> empty .)
+  ! reduce/reduce conflict for FORWARD resolved using rule 12 (expression -> empty .)
+  ! reduce/reduce conflict for ROTATE resolved using rule 12 (expression -> empty .)
+  ! reduce/reduce conflict for COLOR resolved using rule 12 (expression -> empty .)
+  ! reduce/reduce conflict for PEN resolved using rule 12 (expression -> empty .)
+  ! reduce/reduce conflict for $end resolved using rule 2 (result -> empty .)
+    $end            reduce using rule 2 (result -> empty .)
+    FORWARD         reduce using rule 12 (expression -> empty .)
+    ROTATE          reduce using rule 12 (expression -> empty .)
+    COLOR           reduce using rule 12 (expression -> empty .)
+    PEN             reduce using rule 12 (expression -> empty .)
+
+  ! $end            [ reduce using rule 12 (expression -> empty .) ]
+  ! FORWARD         [ reduce using rule 16 (loop -> empty .) ]
+  ! ROTATE          [ reduce using rule 16 (loop -> empty .) ]
+  ! COLOR           [ reduce using rule 16 (loop -> empty .) ]
+  ! PEN             [ reduce using rule 16 (loop -> empty .) ]
+  ! $end            [ reduce using rule 16 (loop -> empty .) ]
+
+
+state 4
+
+    (10) expression -> loop .
+
+    FORWARD         reduce using rule 10 (expression -> loop .)
+    ROTATE          reduce using rule 10 (expression -> loop .)
+    COLOR           reduce using rule 10 (expression -> loop .)
+    PEN             reduce using rule 10 (expression -> loop .)
+    $end            reduce using rule 10 (expression -> loop .)
+    RIGHTBRACKET    reduce using rule 10 (expression -> loop .)
+
+
+state 5
+
+    (11) expression -> loop_with_loop .
+
+    FORWARD         reduce using rule 11 (expression -> loop_with_loop .)
+    ROTATE          reduce using rule 11 (expression -> loop_with_loop .)
+    COLOR           reduce using rule 11 (expression -> loop_with_loop .)
+    PEN             reduce using rule 11 (expression -> loop_with_loop .)
+    $end            reduce using rule 11 (expression -> loop_with_loop .)
+    RIGHTBRACKET    reduce using rule 11 (expression -> loop_with_loop .)
+
+
+state 6
+
+    (14) loop -> LOOP . NUMBER LEFTBRACKET expression RIGHTBRACKET
+    (15) loop -> LOOP . NUMBER LEFTBRACKET loop RIGHTBRACKET
+    (17) loop_with_loop -> LOOP . NUMBER LEFTBRACKET loop expression RIGHTBRACKET
+
+    NUMBER          shift and go to state 11
+
+
+state 7
+
+    (3) expression -> expression FORWARD . NUMBER
+
+    NUMBER          shift and go to state 12
+
+
+state 8
+
+    (4) expression -> expression ROTATE . NUMBER
+
+    NUMBER          shift and go to state 13
+
+
+state 9
+
+    (5) expression -> expression COLOR . KIRMIZI
+    (6) expression -> expression COLOR . YESIL
+    (7) expression -> expression COLOR . MAVI
+    (8) expression -> expression COLOR . SIYAH
+
+    KIRMIZI         shift and go to state 14
+    YESIL           shift and go to state 15
+    MAVI            shift and go to state 16
+    SIYAH           shift and go to state 17
+
+
+state 10
+
+    (9) expression -> expression PEN . NUMBER
+
+    NUMBER          shift and go to state 18
+
+
+state 11
+
+    (14) loop -> LOOP NUMBER . LEFTBRACKET expression RIGHTBRACKET
+    (15) loop -> LOOP NUMBER . LEFTBRACKET loop RIGHTBRACKET
+    (17) loop_with_loop -> LOOP NUMBER . LEFTBRACKET loop expression RIGHTBRACKET
+
+    LEFTBRACKET     shift and go to state 19
+
+
+state 12
+
+    (3) expression -> expression FORWARD NUMBER .
+
+    FORWARD         reduce using rule 3 (expression -> expression FORWARD NUMBER .)
+    ROTATE          reduce using rule 3 (expression -> expression FORWARD NUMBER .)
+    COLOR           reduce using rule 3 (expression -> expression FORWARD NUMBER .)
+    PEN             reduce using rule 3 (expression -> expression FORWARD NUMBER .)
+    $end            reduce using rule 3 (expression -> expression FORWARD NUMBER .)
+    RIGHTBRACKET    reduce using rule 3 (expression -> expression FORWARD NUMBER .)
+
+
+state 13
+
+    (4) expression -> expression ROTATE NUMBER .
+
+    FORWARD         reduce using rule 4 (expression -> expression ROTATE NUMBER .)
+    ROTATE          reduce using rule 4 (expression -> expression ROTATE NUMBER .)
+    COLOR           reduce using rule 4 (expression -> expression ROTATE NUMBER .)
+    PEN             reduce using rule 4 (expression -> expression ROTATE NUMBER .)
+    $end            reduce using rule 4 (expression -> expression ROTATE NUMBER .)
+    RIGHTBRACKET    reduce using rule 4 (expression -> expression ROTATE NUMBER .)
+
+
+state 14
+
+    (5) expression -> expression COLOR KIRMIZI .
+
+    FORWARD         reduce using rule 5 (expression -> expression COLOR KIRMIZI .)
+    ROTATE          reduce using rule 5 (expression -> expression COLOR KIRMIZI .)
+    COLOR           reduce using rule 5 (expression -> expression COLOR KIRMIZI .)
+    PEN             reduce using rule 5 (expression -> expression COLOR KIRMIZI .)
+    $end            reduce using rule 5 (expression -> expression COLOR KIRMIZI .)
+    RIGHTBRACKET    reduce using rule 5 (expression -> expression COLOR KIRMIZI .)
+
+
+state 15
+
+    (6) expression -> expression COLOR YESIL .
+
+    FORWARD         reduce using rule 6 (expression -> expression COLOR YESIL .)
+    ROTATE          reduce using rule 6 (expression -> expression COLOR YESIL .)
+    COLOR           reduce using rule 6 (expression -> expression COLOR YESIL .)
+    PEN             reduce using rule 6 (expression -> expression COLOR YESIL .)
+    $end            reduce using rule 6 (expression -> expression COLOR YESIL .)
+    RIGHTBRACKET    reduce using rule 6 (expression -> expression COLOR YESIL .)
+
+
+state 16
+
+    (7) expression -> expression COLOR MAVI .
+
+    FORWARD         reduce using rule 7 (expression -> expression COLOR MAVI .)
+    ROTATE          reduce using rule 7 (expression -> expression COLOR MAVI .)
+    COLOR           reduce using rule 7 (expression -> expression COLOR MAVI .)
+    PEN             reduce using rule 7 (expression -> expression COLOR MAVI .)
+    $end            reduce using rule 7 (expression -> expression COLOR MAVI .)
+    RIGHTBRACKET    reduce using rule 7 (expression -> expression COLOR MAVI .)
+
+
+state 17
+
+    (8) expression -> expression COLOR SIYAH .
+
+    FORWARD         reduce using rule 8 (expression -> expression COLOR SIYAH .)
+    ROTATE          reduce using rule 8 (expression -> expression COLOR SIYAH .)
+    COLOR           reduce using rule 8 (expression -> expression COLOR SIYAH .)
+    PEN             reduce using rule 8 (expression -> expression COLOR SIYAH .)
+    $end            reduce using rule 8 (expression -> expression COLOR SIYAH .)
+    RIGHTBRACKET    reduce using rule 8 (expression -> expression COLOR SIYAH .)
+
+
+state 18
+
+    (9) expression -> expression PEN NUMBER .
+
+    FORWARD         reduce using rule 9 (expression -> expression PEN NUMBER .)
+    ROTATE          reduce using rule 9 (expression -> expression PEN NUMBER .)
+    COLOR           reduce using rule 9 (expression -> expression PEN NUMBER .)
+    PEN             reduce using rule 9 (expression -> expression PEN NUMBER .)
+    $end            reduce using rule 9 (expression -> expression PEN NUMBER .)
+    RIGHTBRACKET    reduce using rule 9 (expression -> expression PEN NUMBER .)
+
+
+state 19
+
+    (14) loop -> LOOP NUMBER LEFTBRACKET . expression RIGHTBRACKET
+    (15) loop -> LOOP NUMBER LEFTBRACKET . loop RIGHTBRACKET
+    (17) loop_with_loop -> LOOP NUMBER LEFTBRACKET . loop expression RIGHTBRACKET
+    (3) expression -> . expression FORWARD NUMBER
+    (4) expression -> . expression ROTATE NUMBER
+    (5) expression -> . expression COLOR KIRMIZI
+    (6) expression -> . expression COLOR YESIL
+    (7) expression -> . expression COLOR MAVI
+    (8) expression -> . expression COLOR SIYAH
+    (9) expression -> . expression PEN NUMBER
+    (10) expression -> . loop
+    (11) expression -> . loop_with_loop
+    (12) expression -> . empty
+    (14) loop -> . LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET
+    (15) loop -> . LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET
+    (16) loop -> . empty
+    (17) loop_with_loop -> . LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET
+    (13) empty -> .
+
+  ! shift/reduce conflict for LOOP resolved as shift
+    LOOP            shift and go to state 6
+    RIGHTBRACKET    reduce using rule 13 (empty -> .)
+    FORWARD         reduce using rule 13 (empty -> .)
+    ROTATE          reduce using rule 13 (empty -> .)
+    COLOR           reduce using rule 13 (empty -> .)
+    PEN             reduce using rule 13 (empty -> .)
+
+  ! LOOP            [ reduce using rule 13 (empty -> .) ]
+
+    expression                     shift and go to state 20
+    loop                           shift and go to state 21
+    loop_with_loop                 shift and go to state 5
+    empty                          shift and go to state 22
+
+state 20
+
+    (14) loop -> LOOP NUMBER LEFTBRACKET expression . RIGHTBRACKET
+    (3) expression -> expression . FORWARD NUMBER
+    (4) expression -> expression . ROTATE NUMBER
+    (5) expression -> expression . COLOR KIRMIZI
+    (6) expression -> expression . COLOR YESIL
+    (7) expression -> expression . COLOR MAVI
+    (8) expression -> expression . COLOR SIYAH
+    (9) expression -> expression . PEN NUMBER
+
+    RIGHTBRACKET    shift and go to state 23
+    FORWARD         shift and go to state 7
+    ROTATE          shift and go to state 8
+    COLOR           shift and go to state 9
+    PEN             shift and go to state 10
+
+
+state 21
+
+    (15) loop -> LOOP NUMBER LEFTBRACKET loop . RIGHTBRACKET
+    (17) loop_with_loop -> LOOP NUMBER LEFTBRACKET loop . expression RIGHTBRACKET
+    (10) expression -> loop .
+    (3) expression -> . expression FORWARD NUMBER
+    (4) expression -> . expression ROTATE NUMBER
+    (5) expression -> . expression COLOR KIRMIZI
+    (6) expression -> . expression COLOR YESIL
+    (7) expression -> . expression COLOR MAVI
+    (8) expression -> . expression COLOR SIYAH
+    (9) expression -> . expression PEN NUMBER
+    (10) expression -> . loop
+    (11) expression -> . loop_with_loop
+    (12) expression -> . empty
+    (14) loop -> . LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET
+    (15) loop -> . LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET
+    (16) loop -> . empty
+    (17) loop_with_loop -> . LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET
+    (13) empty -> .
+
+  ! shift/reduce conflict for RIGHTBRACKET resolved as shift
+  ! shift/reduce conflict for RIGHTBRACKET resolved as shift
+  ! reduce/reduce conflict for FORWARD resolved using rule 10 (expression -> loop .)
+  ! reduce/reduce conflict for ROTATE resolved using rule 10 (expression -> loop .)
+  ! reduce/reduce conflict for COLOR resolved using rule 10 (expression -> loop .)
+  ! reduce/reduce conflict for PEN resolved using rule 10 (expression -> loop .)
+    RIGHTBRACKET    shift and go to state 24
+    FORWARD         reduce using rule 10 (expression -> loop .)
+    ROTATE          reduce using rule 10 (expression -> loop .)
+    COLOR           reduce using rule 10 (expression -> loop .)
+    PEN             reduce using rule 10 (expression -> loop .)
+    LOOP            shift and go to state 6
+
+  ! RIGHTBRACKET    [ reduce using rule 10 (expression -> loop .) ]
+  ! RIGHTBRACKET    [ reduce using rule 13 (empty -> .) ]
+  ! FORWARD         [ reduce using rule 13 (empty -> .) ]
+  ! ROTATE          [ reduce using rule 13 (empty -> .) ]
+  ! COLOR           [ reduce using rule 13 (empty -> .) ]
+  ! PEN             [ reduce using rule 13 (empty -> .) ]
+
+    loop                           shift and go to state 4
+    expression                     shift and go to state 25
+    loop_with_loop                 shift and go to state 5
+    empty                          shift and go to state 22
+
+state 22
+
+    (12) expression -> empty .
+    (16) loop -> empty .
+
+  ! reduce/reduce conflict for RIGHTBRACKET resolved using rule 12 (expression -> empty .)
+  ! reduce/reduce conflict for FORWARD resolved using rule 12 (expression -> empty .)
+  ! reduce/reduce conflict for ROTATE resolved using rule 12 (expression -> empty .)
+  ! reduce/reduce conflict for COLOR resolved using rule 12 (expression -> empty .)
+  ! reduce/reduce conflict for PEN resolved using rule 12 (expression -> empty .)
+    RIGHTBRACKET    reduce using rule 12 (expression -> empty .)
+    FORWARD         reduce using rule 12 (expression -> empty .)
+    ROTATE          reduce using rule 12 (expression -> empty .)
+    COLOR           reduce using rule 12 (expression -> empty .)
+    PEN             reduce using rule 12 (expression -> empty .)
+    LOOP            reduce using rule 16 (loop -> empty .)
+
+  ! RIGHTBRACKET    [ reduce using rule 16 (loop -> empty .) ]
+  ! FORWARD         [ reduce using rule 16 (loop -> empty .) ]
+  ! ROTATE          [ reduce using rule 16 (loop -> empty .) ]
+  ! COLOR           [ reduce using rule 16 (loop -> empty .) ]
+  ! PEN             [ reduce using rule 16 (loop -> empty .) ]
+
+
+state 23
+
+    (14) loop -> LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET .
+
+    FORWARD         reduce using rule 14 (loop -> LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET .)
+    ROTATE          reduce using rule 14 (loop -> LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET .)
+    COLOR           reduce using rule 14 (loop -> LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET .)
+    PEN             reduce using rule 14 (loop -> LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET .)
+    $end            reduce using rule 14 (loop -> LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET .)
+    RIGHTBRACKET    reduce using rule 14 (loop -> LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET .)
+    LOOP            reduce using rule 14 (loop -> LOOP NUMBER LEFTBRACKET expression RIGHTBRACKET .)
+
+
+state 24
+
+    (15) loop -> LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET .
+
+    FORWARD         reduce using rule 15 (loop -> LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET .)
+    ROTATE          reduce using rule 15 (loop -> LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET .)
+    COLOR           reduce using rule 15 (loop -> LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET .)
+    PEN             reduce using rule 15 (loop -> LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET .)
+    $end            reduce using rule 15 (loop -> LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET .)
+    RIGHTBRACKET    reduce using rule 15 (loop -> LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET .)
+    LOOP            reduce using rule 15 (loop -> LOOP NUMBER LEFTBRACKET loop RIGHTBRACKET .)
+
+
+state 25
+
+    (17) loop_with_loop -> LOOP NUMBER LEFTBRACKET loop expression . RIGHTBRACKET
+    (3) expression -> expression . FORWARD NUMBER
+    (4) expression -> expression . ROTATE NUMBER
+    (5) expression -> expression . COLOR KIRMIZI
+    (6) expression -> expression . COLOR YESIL
+    (7) expression -> expression . COLOR MAVI
+    (8) expression -> expression . COLOR SIYAH
+    (9) expression -> expression . PEN NUMBER
+
+    RIGHTBRACKET    shift and go to state 26
+    FORWARD         shift and go to state 7
+    ROTATE          shift and go to state 8
+    COLOR           shift and go to state 9
+    PEN             shift and go to state 10
+
+
+state 26
+
+    (17) loop_with_loop -> LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET .
+
+    FORWARD         reduce using rule 17 (loop_with_loop -> LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET .)
+    ROTATE          reduce using rule 17 (loop_with_loop -> LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET .)
+    COLOR           reduce using rule 17 (loop_with_loop -> LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET .)
+    PEN             reduce using rule 17 (loop_with_loop -> LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET .)
+    $end            reduce using rule 17 (loop_with_loop -> LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET .)
+    RIGHTBRACKET    reduce using rule 17 (loop_with_loop -> LOOP NUMBER LEFTBRACKET loop expression RIGHTBRACKET .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for LOOP in state 19 resolved as shift
+WARNING: shift/reduce conflict for RIGHTBRACKET in state 21 resolved as shift
+WARNING: shift/reduce conflict for RIGHTBRACKET in state 21 resolved as shift
+WARNING: reduce/reduce conflict in state 3 resolved using rule (result -> empty)
+WARNING: rejected rule (expression -> empty) in state 3
+WARNING: reduce/reduce conflict in state 3 resolved using rule (expression -> empty)
+WARNING: rejected rule (loop -> empty) in state 3
+WARNING: reduce/reduce conflict in state 3 resolved using rule (result -> empty)
+WARNING: rejected rule (loop -> empty) in state 3
+WARNING: reduce/reduce conflict in state 21 resolved using rule (expression -> loop)
+WARNING: rejected rule (empty -> <empty>) in state 21
+WARNING: reduce/reduce conflict in state 22 resolved using rule (expression -> empty)
+WARNING: rejected rule (loop -> empty) in state 22
